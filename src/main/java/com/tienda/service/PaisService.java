@@ -16,7 +16,7 @@ public class PaisService  implements IPaisService{
     
     @Override
     public List<Pais> listCountry() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+      return (List<Pais>) paisRepository.findAll();
     }
     
     
