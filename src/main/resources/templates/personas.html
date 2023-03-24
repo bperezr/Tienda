@@ -15,8 +15,12 @@
         ></script>
     </head>
     
-      <h1 th:text="${titulo}"></h1>  
-      <h1 th:text="# {cliente.titulo} "></h1>                   
+    <form action="/search" method="get">
+  <label for="apellido1">Apellido:</label>
+  <input type="text" id="name" name="apellido1" required>
+  <button type="submit">Buscar</button>
+</form>
+                   
       <div style="float:right; padding-bottom: 5px; padding-right: 10px">
             <a class="btn btn-success" th:href="@{/personaN}">Agregar Persona</a>
       </div>

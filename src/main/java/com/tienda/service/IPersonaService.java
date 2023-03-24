@@ -8,6 +8,9 @@ import java.util.List;
 public interface IPersonaService {
     public List<Persona> getAllPersona();
     public Persona getPersonaById (long id);
+    public List<Persona> findByApellido1(String apellido1);
     public void savePersona (Persona persona);
     public void delete (long id);       
 }
+
+

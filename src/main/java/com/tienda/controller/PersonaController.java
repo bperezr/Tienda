@@ -7,12 +7,15 @@ import com.tienda.service.IPaisService;
 import com.tienda.service.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class PersonaController {
@@ -26,7 +29,6 @@ public class PersonaController {
     @GetMapping("/persona")
     public String index(Model model){
     List<Persona> listaPersona = personaService.getAllPersona();
-    model.addAttribute("titulo", "Tabla Personas");
     model.addAttribute("persona", listaPersona);
     return "personas";    
     }
@@ -75,8 +77,15 @@ public class PersonaController {
      personaService.savePersona(personaEditar);
       return "redirect:/persona";
     }
-    
-    
+   
+
+@GetMapping("/search")
+public ModelAndView searchByName(@RequestParam("apellido1") String apellido1) {
+    List<Persona> apellido = personaService.findByApellido1(apellido1);
+    ModelAndView modelAndView = new ModelAndView("personas_1");
+    modelAndView.addObject("apellido", apellido);
+    return modelAndView;
+}
     
     
 }
