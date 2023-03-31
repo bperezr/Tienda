@@ -8,8 +8,11 @@ import org.springframework.stereotype.Repository;
 
  @Repository
 public interface PersonaRepository extends JpaRepository<Persona,Long>{
-      List<Persona> findByApellido1(String apellido1);
+      List<Persona> findByApellido1(String apellido1);      
+      Persona findByNombre (String nombre);
+      
 }
+
 
 
 
